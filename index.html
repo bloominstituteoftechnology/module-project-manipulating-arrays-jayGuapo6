@@ -73,18 +73,19 @@
     // sumNumsWhile([1, 2, 13]) // should return "I'm too superstitious!"
     function sumNumsWhile(nums) {
       
-      let sum = 0
+      let resultSum = 0
       let idx = 0 
        while (idx <= nums.length) {
         let char = nums[idx]
         if (typeof char === 'number') {
           if (char === 13) {
             return "I'm too superstitious!"
-          }
+          } 
         }
+        resultSum = resultSum + idx
+        idx++
       }
-      sum = sum + idx
-       return sum
+       return resultSum
     }
 
     // 👉 CHALLENGE 4
@@ -104,8 +105,22 @@
     // 🧠 There are many ways to solve this, but practice using a while loop.
     // 🧠 Work out using pen and paper how the round number and the lifePoints change after each round.
     // 🧠 As long as there are lifePoints, decrease lifePoints by round number, and increase round number by one.
-    function fightMonsters() {
+    function fightMonsters(lifePoints) {
+      let rounds = 1
 
+      while (lifePoints > 0) {
+        lifePoints -= rounds
+        if (lifePoints <= 0) {
+          return `You died in round ${rounds}`
+        }
+        // if (lifePoints === 0) {
+        //   return `you died in round ${rounds}`
+          
+        // }
+        rounds++
+
+        
+      }
     }
 
     // 👉 CHALLENGE 5
@@ -115,8 +130,19 @@
     // findEvenNums([0, 1, 2, 3, 4]) // should return [0, 2, 4]
     // ❗ Notes:
     // 🧠 Use any kind of loop you'd like and the push method to populate the array of even numbers.
-    function findEvenNums() {
+    function findEvenNums(arr) {
+      const results = []
+      let nums = 0
+      for (idx = 0; idx <= arr.length; idx++) {
+        nums =arr[idx]
+        if (nums % 2 === 0) {
+          results.push(nums)
+        }
+        // console.log(`this is the ${nums}`)
 
+      }
+
+      return results
     }
 
     // 👉 CHALLENGE 6
@@ -126,8 +152,19 @@
     // 🧠 Ages in the subarrays should appear in the same order they appeared in the original array.
     // 🧠 Examples of usage:
     // separateAges([31, 12, 25, 65, 84, 20]) // should return [[12, 20], [31, 25, 65, 84]]
-    function separateAges() {
-
+    function separateAges(age) {
+      const lessThan = []
+      const greaterThan = []
+      for (let idx = 0; idx < age.length; idx++) {
+        const element = age[idx];
+        if (element < 21) {
+          lessThan.push(element)
+        } else {
+          greaterThan.push(element)
+          
+        }
+      }
+      return [lessThan, greaterThan]
     }
 
     // 👉 CHALLENGE 7
@@ -137,7 +174,10 @@
     // 🧠 The "tail" prop contains an array holding the elements of the array after the first one.
     // 🧠 Examples of usage:
     // headAndTail([1, 2, 3]) // should return { head: 1, tail: [2, 3] }
-    function headAndTail() {
+    function headAndTail(arr) {
+      let head = arr[0]
+      let tail =  arr.slice(1)
+      return ( 'head', 'tail')
 
     }
 
@@ -148,8 +188,30 @@
     // nestedLoops(['hello', 'goodbye']) // should return ['hEllO', 'gOOdbyE']
     // ❗ Notes:
     // 🧠 To capitalize a string you can use its toUpperCase method: "a".toUpperCase() returns "A"
-    function nestedLoops() {
+    function nestedLoops(strings) {
+      let result = []
+      
+      for (let i in strings) {
 
+        let word = strings[i]
+           let newWord = ''
+        for (let i in word) {
+         
+          let char = word[i]
+     
+          if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u') {
+            let upperCased = char.toUpperCase()
+            newWord += upperCased
+          } else {
+            newWord += char
+          }
+        }
+        result.push(newWord)
+      }
+      
+      
+
+      return result
     }
 
     // 👉 CHALLENGE 9
@@ -163,7 +225,13 @@
     // 🧠 Practice using pop and slice.
     // 🧠 Note that pop modifies the original array in place and returns the "popped" element, whereas slice gives us a brand new array.
     function crazyTrimmer(arr) {
-
+    if (arr % 2 === 0) {
+      arr.pop()
+      return arr
+      } else {
+        arr.slice(1, -1)
+        return arr
+      }
     }
 
     // 🧪 TESTS, do not work below this line
