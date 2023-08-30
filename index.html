@@ -75,15 +75,17 @@
       
       let resultSum = 0
       let idx = 0 
-       while (idx <= nums.length) {
-        let char = nums[idx]
-        if (typeof char === 'number') {
-          if (char === 13) {
+       while (idx < nums.length) {
+        let elem = nums[idx]
+        if (typeof elem === 'number') {
+          if (elem === 13) {
             return "I'm too superstitious!"
           } 
+          resultSum += elem
+         
         }
-        resultSum = resultSum + idx
-        idx++
+         idx++
+      
       }
        return resultSum
     }
@@ -176,8 +178,8 @@
     // headAndTail([1, 2, 3]) // should return { head: 1, tail: [2, 3] }
     function headAndTail(arr) {
       let head = arr[0]
-      let tail =  arr.slice(1)
-      return ( 'head', 'tail')
+      let tail =  arr.slice(1,)
+      return {head, tail}
 
     }
 
@@ -225,12 +227,13 @@
     // 🧠 Practice using pop and slice.
     // 🧠 Note that pop modifies the original array in place and returns the "popped" element, whereas slice gives us a brand new array.
     function crazyTrimmer(arr) {
-    if (arr % 2 === 0) {
+    if (arr.length % 2 === 0) {
       arr.pop()
-      return arr
+    
+       return arr
       } else {
-        arr.slice(1, -1)
-        return arr
+        return arr.slice(1, -1)
+         
       }
     }
 
